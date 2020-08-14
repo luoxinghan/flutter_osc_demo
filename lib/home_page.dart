@@ -23,6 +23,8 @@ class _HomePageState extends State<HomePage> {
   ];
   List<NavigationIconView> _navigationIconViews;
 
+  var _currentIndex = 0;//当前菜单
+
   @override
   void initState() {
     super.initState();
@@ -50,11 +52,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('开源中国'),
+        title: Text(_appBarTitle[_currentIndex]),
       ),
       body: Container(),
       bottomNavigationBar: BottomNavigationBar(
-          items: _navigationIconViews.map((view) => view.item).toList()),
+        currentIndex: _currentIndex,
+        items: _navigationIconViews.map((view) => view.item).toList(),
+        type: BottomNavigationBarType.fixed,
+        onTap: (index){
+          setState((){
+            _currentIndex = index;
+          });
+        },
+      ),
     );
   }
 }
