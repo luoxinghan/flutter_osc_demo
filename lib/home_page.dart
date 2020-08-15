@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_osc_client/constants/constants.dart';
+import 'package:flutter_osc_client/pages/discovery_page.dart';
+import 'package:flutter_osc_client/pages/news_list_page.dart';
+import 'package:flutter_osc_client/pages/profile_page.dart';
+import 'package:flutter_osc_client/pages/tweet_page.dart';
 import 'package:flutter_osc_client/widgets/navigation_icon_view.dart';
 
 //为了避免堆叠过多 所以移到一个新的文件内
@@ -23,7 +28,13 @@ class _HomePageState extends State<HomePage> {
   ];
   List<NavigationIconView> _navigationIconViews;
 
-  var _currentIndex = 0;//当前菜单
+  var _currentIndex = 0; //当前菜单
+
+  //下面的组件页面
+  List<Widget> _pages;
+
+  //页面左右滑动效果 使用PageController
+  PageController _pageController;
 
   @override
   void initState() {
@@ -46,23 +57,50 @@ class _HomePageState extends State<HomePage> {
           iconPath: _appBarIconPath[3],
           activeIconPath: _appBarActiveIconPath[3])
     ];
+
+    _pages = [
+      NewsListPage(),
+      TweetPage(),
+      DiscoveryPage(),
+      ProfilePage(),
+    ];
+
+    _pageController = PageController(initialPage: _currentIndex);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_appBarTitle[_currentIndex]),
+        title: Text(
+          _appBarTitle[_currentIndex],
+          style: TextStyle(color: Color(AppColors.APPBAR)),
+        ),
       ),
-      body: Container(),
+      //body: _pages[_currentIndex],使用PageController之前
+      body: PageView.builder(
+          //physics: NeverScrollableScrollPhysics(),这里可以阻止滑动
+          itemBuilder: (BuildContext context, int index) {
+            return _pages[index];
+          },
+          controller: _pageController,
+          itemCount: _pages.length,
+          onPageChanged: (index) {
+            setState(() {
+              //当其滑动时需要将底部导航栏也进行更新状态
+              _currentIndex = index;
+            });
+          }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         items: _navigationIconViews.map((view) => view.item).toList(),
         type: BottomNavigationBarType.fixed,
-        onTap: (index){
-          setState((){
+        onTap: (index) {
+          setState(() {
             _currentIndex = index;
           });
+          _pageController.animateToPage(index,
+              duration: Duration(microseconds: 1), curve: Curves.ease);
         },
       ),
     );
