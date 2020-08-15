@@ -4,6 +4,7 @@ import 'package:flutter_osc_client/pages/discovery_page.dart';
 import 'package:flutter_osc_client/pages/news_list_page.dart';
 import 'package:flutter_osc_client/pages/profile_page.dart';
 import 'package:flutter_osc_client/pages/tweet_page.dart';
+import 'package:flutter_osc_client/widgets/my_drawer.dart';
 import 'package:flutter_osc_client/widgets/navigation_icon_view.dart';
 
 //为了避免堆叠过多 所以移到一个新的文件内
@@ -74,8 +75,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           _appBarTitle[_currentIndex],
-          style: TextStyle(color: Color(AppColors.APPBAR)),
+          style: TextStyle(color: Color(AppColors.APPBAR),),
         ),
+        iconTheme: IconThemeData(color: Color(AppColors.APPBAR)),
       ),
       //body: _pages[_currentIndex],使用PageController之前
       body: PageView.builder(
@@ -103,6 +105,11 @@ class _HomePageState extends State<HomePage> {
               duration: Duration(microseconds: 1), curve: Curves.ease);
         },
       ),
+      drawer: MyDrawer(
+        headImgPath: 'assets/images/cover_img.jpg',
+        menuIcons: [Icons.send, Icons.home, Icons.error, Icons.settings],
+        menuTitles: ['发布动态','动态小黑屋','关于','设置'],
+      ),//侧滑菜单
     );
   }
 }

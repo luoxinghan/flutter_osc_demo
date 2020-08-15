@@ -58,6 +58,8 @@ flutter:
     - assets/images/ic_nav_discover_actived.png
     - assets/images/ic_nav_news_normal.png
     - assets/images/ic_nav_news_actived.png
+    #抽屉背景图
+    - assets/images/cover_img.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
