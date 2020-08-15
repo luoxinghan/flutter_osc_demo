@@ -16,16 +16,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _appBarTitle = ['资讯', '动态', '发现', '我的'];
   final _appBarIconPath = [
-    'assets/images/ic_nav_discover_normal.png',
+    'assets/images/ic_nav_news_normal.png',
     'assets/images/ic_nav_tweet_normal.png',
     'assets/images/ic_nav_discover_normal.png',
-    'assets/images/ic_nav_news_normal.png'
+    'assets/images/ic_nav_my_normal.png'
   ];
   final _appBarActiveIconPath = [
-    'assets/images/ic_nav_discover_actived.png',
+    'assets/images/ic_nav_news_actived.png',
     'assets/images/ic_nav_tweet_actived.png',
     'assets/images/ic_nav_discover_actived.png',
-    'assets/images/ic_nav_news_actived.png'
+    'assets/images/ic_nav_my_pressed.png'
   ];
   List<NavigationIconView> _navigationIconViews;
 
@@ -73,6 +73,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,//去掉阴影
         title: Text(
           _appBarTitle[_currentIndex],
           style: TextStyle(color: Color(AppColors.APPBAR),),
