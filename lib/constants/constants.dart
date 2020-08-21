@@ -11,7 +11,7 @@ abstract class AppColors {
 abstract class AppInfos {
   static const String CLIENT_ID = 'zfBPjG9NzRLIaaJxM1Dh';//应用ID
   static const String CLIENT_SECRET = 'h6VWQu48lGcJmjm3bhVfznYZwvXCqq6n';//应用私钥
-  static const String REDIRECT_URI = '	https://www.cnblogs.com/rohank/';//回调地址
+  static const String REDIRECT_URI = 'https://www.cnblogs.com/rohank/';//回调地址
 }
 
 abstract class AppUrls {
@@ -22,4 +22,13 @@ abstract class AppUrls {
 
   //authorization_code 方式获取 AccessToken
   static const String OAUTH2_TOKEN = HOST + '/action/openapi/token';
+
+  //获取登陆用户信息
+  static const String OPENAPI_USER = HOST + '/action/openapi/user';
+
+  //获取用户详情
+  static const String MY_INFORMATION = HOST + '/action/openapi/my_information';
+
+  //获得用户私信列表
+  static const String MESSAGE_LIST = HOST + '/action/openapi/message_list';
 }
