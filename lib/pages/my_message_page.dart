@@ -83,13 +83,17 @@ class _MyMessagePageState extends State<MyMessagePage> {
                             ),
                           ),
                           Text(
-                            '${messageList[index]['content']}',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(fontSize: 12.0),
+                            '${messageList[index]['pubDate']}',
+                            style: TextStyle(fontSize: 12.0, color: Color(0xffaaaaaa)),
                           )
                         ],
-                      )
+                      ),
+                      Text(
+                        '${messageList[index]['content']}',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: TextStyle(fontSize: 12.0),
+                      ),
                     ],
                   ),
                 )

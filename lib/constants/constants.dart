@@ -31,4 +31,13 @@ abstract class AppUrls {
 
   //获得用户私信列表
   static const String MESSAGE_LIST = HOST + '/action/openapi/message_list';
+
+  //获取新闻列表
+  static const String NEWS_LIST = HOST + '/action/openapi/news_list';
+
+  //获取新闻详情
+  static const String NEWS_DETAIL = HOST + '/action/openapi/news_detail';
+
+  //获取动弹列表 （最新动弹列表 我的动弹）
+  static const String TWEET_LIST  = HOST + '/action/openapi/tweet_list';
 }
